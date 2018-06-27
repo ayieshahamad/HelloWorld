@@ -290,7 +290,7 @@ public class PracticeAlgorithm {
     {
         int variable =0;
         funcWithSameVariable();
-        System.out.println("NO ERROR ");
+        System.out.println("NO -- ERROR ");
 
     }
     private static void que30()
