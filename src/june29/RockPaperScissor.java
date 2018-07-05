@@ -33,14 +33,16 @@ public class RockPaperScissor {
             System.out.println("Please enter:\n1- For Rock\n2- For Paper\n3- For Scissor");
 
             playerTurn = readIntOnly();
-            computerTurn = random.nextInt(max - min + 1) + min;
+            if (playerTurn >= 1 && playerTurn <= 3) {
+                computerTurn = random.nextInt(max - min + 1) + min;
 
-            if(gameStatus[playerTurn-1][computerTurn-1] == 1)
-                playerScore ++;
-            else if (gameStatus[playerTurn-1][computerTurn-1] == 2)
-                computerScore ++;
+                if (gameStatus[playerTurn - 1][computerTurn - 1] == 1)
+                    playerScore++;
+                else if (gameStatus[playerTurn - 1][computerTurn - 1] == 2)
+                    computerScore++;
 
-            System.out.println("You go "+option[playerTurn-1]+". Computer goes "+option[computerTurn-1]+"! You won "+playerScore+" times. Computer won " + computerScore + " times..");
+                System.out.println("You go " + option[playerTurn - 1] + ". Computer goes " + option[computerTurn - 1] + "! You won " + playerScore + " times. Computer won " + computerScore + " times..");
+            }
         }
     }
     private static void rockPaperScissorGame_WithCondition(){
