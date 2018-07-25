@@ -11,25 +11,25 @@ public class MusicPlayerProgram {
         do {
             displayMenu();
             input = getCommand("Please enter your selection:");
-            if(input == 1) {
+            if(input == 1 ) {
 
                 if(myMusicPlayer.getIndex() == 0) {
                     if(getString("You currently have no songs in your playlist! Add a new one? [Y/N] ").charAt(0) == 'Y')
                         myMusicPlayer.add(getString("Title "),getString("Author "));
                 }
-                else {
-                    myMusicPlayer.showPlayList();
-                    myMusicPlayer.play(getCommand("Which song do you want to play? "));
-                }
-            }else if(input == 2) {
+
+                myMusicPlayer.showPlayList();
+
+            }
+            else if(input == 2) {
                 if(myMusicPlayer.getIndex() == 0) {
                     if(getString("You currently have no songs in your playlist! Add a new one? [Y/N] ").charAt(0) == 'Y')
                         myMusicPlayer.add(getString("Title "),getString("Author "));
-                }else{
-                    myMusicPlayer.showPlayList();
-                    myMusicPlayer.play(getCommand("Which song do you want to play? "));
                 }
-            }else if(input == 3){
+                myMusicPlayer.showPlayList();
+                myMusicPlayer.play(getCommand("Which song do you want to play? "));
+            }
+            else if(input == 3){
                 myMusicPlayer.add(getString("Title "),getString("Author "));
             }
 

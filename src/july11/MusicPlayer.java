@@ -12,9 +12,9 @@ public class MusicPlayer {
         return index;
     }
 
-    public void setIndex(int index) {
+   /* public void setIndex(int index) {
         this.index = index;
-    }
+    }*/
 
     public void add(String title, String auther){
         playList[index] = new Song(title,auther);
