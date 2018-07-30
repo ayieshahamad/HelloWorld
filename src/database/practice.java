@@ -5,19 +5,20 @@ import java.sql.*;
 public class practice {
 
         static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-        static final String DB_URL = "jdbc:mysql://localhost/";
+        static final String DB_URL = "jdbc:mysql://localhost:3306/";
 
         //  Database credentials
-        static final String USER = "ayieshahamad";
-        static final String PASS = "ayieshahamad";
+        static final String USER = "root";
+        static final String PASS = "Ayesha1234?";
 
         public static void main(String[] args) {
             Connection conn = null;
             Statement stmt = null;
             try{
                 //STEP 2: Register JDBC driver
-                Class.forName("com.mysql.jdbc.Driver");
-
+                System.out.println("ok");
+                Class.forName("com.mysql.cj.jdbc.Driver");//com.mysql.cj.jdbc.Driver//com.mysql.jdbc.Driver (previous)
+                System.out.println("ok");
                 //STEP 3: Open a connection
                 System.out.println("Connecting to database...");
                 conn = DriverManager.getConnection(DB_URL, USER, PASS);
@@ -25,9 +26,17 @@ public class practice {
                 //STEP 4: Execute a query
                 System.out.println("Creating database...");
                 stmt = conn.createStatement();
+//SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'DBName'
+                String sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'STUDENTSHKKK'";//"CREATE DATABASE IF NOT EXISTS STUDENTS";
+                //stmt.executeUpdate(sql);
+                ResultSet resultSet =  stmt.executeQuery(sql);
+                
+                if(resultSet.wasNull() == true)
+                    System.out.println("null");
+                else
+                    System.out.println("not null");
 
-                String sql = "CREATE DATABASE STUDENTS";
-                stmt.executeUpdate(sql);
+
                 System.out.println("Database created successfully...");
             }catch(SQLException se){
                 //Handle errors for JDBC
@@ -47,7 +56,7 @@ public class practice {
                         conn.close();
                 }catch(SQLException se){
                     se.printStackTrace();
-                }//end finally try
+                }//end finally tryl2
             }//end try
             System.out.println("Goodbye!");
         }//end main
