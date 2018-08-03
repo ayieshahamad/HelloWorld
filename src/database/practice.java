@@ -26,16 +26,30 @@ public class practice {
                 //STEP 4: Execute a query
                 System.out.println("Creating database...");
                 stmt = conn.createStatement();
-//SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'DBName'
-                String sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'STUDENTSHKKK'";//"CREATE DATABASE IF NOT EXISTS STUDENTS";
+                //SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'DBName'
+                //String sql = "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'STUDENTSHKKK'";//"CREATE DATABASE IF NOT EXISTS STUDENTS";
+
+                //String sql = "CREATE DATABASE IF NOT EXISTS STUDENTS123";
                 //stmt.executeUpdate(sql);
-                ResultSet resultSet =  stmt.executeQuery(sql);
-                
-                if(resultSet.wasNull() == true)
+
+                //ResultSet resultSet =  stmt.executeQuery(sql);
+
+                /*if(resultSet.wasNull() == true)
                     System.out.println("null");
                 else
-                    System.out.println("not null");
+                    System.out.println("not null");*/
+                ResultSet resultSet = conn.getMetaData().getCatalogs();
 
+                //iterate each catalog in the ResultSet
+                while (resultSet.next()) {
+                    // Get the database name, which is at position 1
+                    String databaseName = resultSet.getString(1);
+                    System.out.println(databaseName);
+                    if(databaseName.equals("students") ){
+                        System.out.println("exists");
+                    }
+                }
+                resultSet.close();
 
                 System.out.println("Database created successfully...");
             }catch(SQLException se){
@@ -49,6 +63,7 @@ public class practice {
                 try{
                     if(stmt!=null)
                         stmt.close();
+
                 }catch(SQLException se2){
                 }// nothing we can do
                 try{
