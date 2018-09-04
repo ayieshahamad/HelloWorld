@@ -1,0 +1,16 @@
+body {
+    background-color: grey;
+}
+h1 {
+    color: blue;
+}
+p {
+    color: black;
+    font-family: courier;
+    font-size: 160%;
+     padding: 30px;
+     margin: 50px;
+}
+#p01 {
+    color: blue;
+}
